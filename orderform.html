@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chasten's Fashion Boutique Form</title>
+  
+  <style>
+    body {
+        background-color: pink;
+        min-height: 100vh;
+        padding: 30px;
+        display: flex;
+        justify-content: center; /* Center the content horizontally */
+        align-items: center; /* Vertically center the content */
+      }
+  
+      .container {
+        display: grid;
+        grid-template-columns: 50% 50%; /* Create two equal columns */
+        gap: 50px; /* Add spacing between columns */
+      }
+  
+      .order-form-container {
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        display: flex; /* Use flexbox for layout within the form container */
+        flex-direction: column; /* Align items vertically */
+      }
+  
+      .image-container {
+        display: flex; /* Use flexbox for the image container */
+        flex-direction: column; /* Align items vertically */
+        align-items: center; /* Center the image horizontally */
+      }
+  
+      .image-container img {
+        width: 100%; /* Make the image fill the container width */
+        height: auto; /* Maintain aspect ratio */
+        max-height: 100%; /* Ensure the image doesn't exceed the container height */
+      }
+
+      button[type="submit"] {
+        background-color: black; /* Green background color */
+        color: white; /* White text color */
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+    </style>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chasten's Order Form</title>
+    <link rel="stylesheet" href="order-form.css">
+</head>
+<body>
+    <div class="container">
+        <div class="order-form-container">
+            <h2>Order Form</h2>
+            <form id="order-form">
+                <div class="form-group">
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone:</label><br>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label><br>
+                    <textarea id="address" name="address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="item">Item:</label><br>
+                    <select id="item" name="item" required>
+                        <option value="">Select an item</option>
+                        <option value="Short Sleeve V-neck Shirt">Short Sleeve V-neck Shirt</option>
+                        <option value="Kawaii Cat Shirt">Kawaii Cat Shirt</option>
+                        <option value="Bunny Shirt">Bunny Shirt</option>
+                        <option value="Coquette Pleated Skirt">Coquette Pleated Skirt</option>
+                        <option value="Denim Short">Denim Short</option>
+                        <option value="Casual Bear Short">Casual Bear Short</option>
+                        <option value="Star Applique Sneakers">Star Applique Sneakers</option>
+                        <option value="Brown Platform Sneakers">Brown Platform Sneakers</option>
+                        <option value="Elegant Sandal">Elegant Sandal</option>
+                        <option value="Lingge Shoulder Bag">Lingge Shoulder Bag</option>
+                        <option value="Tote Strawberry Bag">Tote Strawberry Bag</option>
+                        <option value="Crochet Shoulder Bag">Crochet Shoulder Bag</option>
+                        <option value="Knitted Ribbon Top">Knitted Ribbon Top</option>
+                        <option value="Plain Bow Tank Top">Plain Bow Tank Top</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label><br>
+                    <input type="number" id="quantity" name="quantity" min="1" required>
+                </div><br>
+                <button type="submit">Place Order</button>
+            </form>
+            <div id="order-message"></div>
+        </div>
+        <div class="image-container">
+            <img src="img/logo2.png" alt="Image description">
+        </div>
+    </div>
+    
+    <script src="order-form.js"></script>
+</body>
+</html>
+    
+
+<script>
+const orderForm = document.getElementById('order-form');
+const orderMessage = document.getElementById('order-message');
+
+orderForm.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent form submission in the traditional way
+
+    // Get form data
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const item = document.getElementById('item').value;
+    const quantity = document.getElementById('quantity').value;
+
+    // You can use this data to send it to a server (e.g., using AJAX) for processing.
+    // For now, let's just display a confirmation message.
+    orderMessage.textContent = `Order placed successfully!
+        Name: ${name}
+        Email: ${email}
+        Phone: ${phone}
+        Address: ${address}
+        Item: ${item}
+        Quantity: ${quantity}`;
+
+    // Clear the form after submission
+    orderForm.reset();
+});
+</script>
+</body>
+</html>
